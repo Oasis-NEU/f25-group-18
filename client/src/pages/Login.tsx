@@ -1,5 +1,7 @@
+import Button from "./Button"
+
 function Login() {
-    return <>Login</>
+    return <Button />
 }
 
 export default Login
