@@ -64,11 +64,29 @@ const ChallengeTypes = () => {
     { icon: Gamepad2, label: 'Mini-Game', color: 'orange' }
   ];
 
+  // map all color variants you need
+  const bgColors = {
+    pink: 'bg-pink-100',
+    blue: 'bg-blue-100',
+    green: 'bg-green-100',
+    orange: 'bg-orange-100',
+  };
+
+  const textColors = {
+    pink: 'text-pink-600',
+    blue: 'text-blue-600',
+    green: 'text-green-600',
+    orange: 'text-orange-600',
+  };
+
   return (
     <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
       {types.map(({ icon: Icon, label, color }) => (
-        <div key={label} className={`bg-${color}-100 rounded-2xl p-6 text-center`}>
-          <Icon className={`w-8 h-8 mx-auto mb-2 text-${color}-600`} />
+        <div
+          key={label}
+          className={`${bgColors[color]} rounded-2xl p-6 text-center`}
+        >
+          <Icon className={`w-8 h-8 mx-auto mb-2 ${textColors[color]}`} />
           <div className="text-sm font-semibold text-gray-800">{label}</div>
         </div>
       ))}
