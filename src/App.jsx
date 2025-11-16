@@ -3,7 +3,7 @@ import React, { useState, useEffect } from "react";
 import {
   Camera,
   Video,
-  FileText, a
+  FileText,
   Gamepad2,
   Trophy,
   Users,
