@@ -10,7 +10,7 @@ const Header = ({ streak, points }) => (
         <div className="w-10 h-10 bg-purple-200 rounded-xl flex items-center justify-center">
           <Zap className="w-6 h-6 text-purple-600" />
         </div>
-        <h1 className="text-2xl font-bold text-gray-800">Rush Hour</h1>
+        <h1 className="text-2xl font-bold text-gray-800">Challenge Me!</h1>
       </div>
       <div className="flex items-center gap-6">
         <div className="flex items-center gap-2 bg-orange-100 px-4 py-2 rounded-full">
