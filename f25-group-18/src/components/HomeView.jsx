@@ -15,6 +15,10 @@ const HomeView = ({
     return `${mins}:${secs.toString().padStart(2, "0")}`;
   };
 
+  // Calculate potential speed bonus
+  const speedBonus = timeLeft > 119 ? 15 : 0;
+  const totalPotentialPoints = 50 + speedBonus;
+
   if (!isActive && !hasSubmitted) {
     return (
       <div className="text-center space-y-8">
@@ -72,7 +76,7 @@ const HomeView = ({
             <div>
               <div className="text-sm text-gray-500">Video Challenge</div>
               <div className="text-2xl font-bold text-gray-800">
-                Record a 15-second video of your day
+                Record a 15-second video of you singing your favorite song!
               </div>
             </div>
           </div>
@@ -98,18 +102,32 @@ const HomeView = ({
 
           <div className="mt-6 p-4 bg-yellow-50 rounded-xl border border-yellow-200">
             <div className="text-sm font-semibold text-yellow-700 mb-2">
-              Potential Rewards:
+              Current Potential Rewards:
             </div>
             <div className="flex gap-4 text-sm text-gray-700">
               <div>🎯 Base: +50 pts</div>
-              <div>⚡ Speed: +15 pts</div>
-              <div>✨ Creativity: Up to +25 pts</div>
+              <div
+                className={
+                  speedBonus > 0 ? "text-green-600 font-bold" : "text-gray-400"
+                }
+              >
+                ⚡ Speed Bonus: +{speedBonus} pts{" "}
+                {speedBonus > 0 ? "✓" : "(Submit within 1 min!)"}
+              </div>
+              <div>👍 Likes: +1 pts per like</div>
+            </div>
+            <div className="mt-2 text-lg font-bold text-gray-800">
+              Total: {totalPotentialPoints} points + likes
             </div>
           </div>
         </div>
       </div>
     );
   }
+
+  // Calculate the actual points earned after submission
+  const actualSpeedBonus = timeLeft > 119 ? 15 : 0;
+  const earnedPoints = 50 + actualSpeedBonus;
 
   return (
     <div className="max-w-3xl mx-auto text-center space-y-6">
@@ -118,7 +136,23 @@ const HomeView = ({
         <div className="text-3xl font-bold mb-2 text-gray-800">
           Challenge Submitted!
         </div>
-        <div className="text-lg text-gray-700">+75 points earned</div>
+        <div className="text-lg text-gray-700">
+          <div>🎯 Base Points: +50</div>
+          {actualSpeedBonus > 0 && (
+            <div className="text-green-600 font-bold">
+              ⚡ Speed Bonus: +{actualSpeedBonus}
+            </div>
+          )}
+          {actualSpeedBonus === 0 && (
+            <div className="text-gray-500">⚡ Speed Bonus: +0 (Too slow)</div>
+          )}
+          <div className="text-blue-600">
+            👍 Likes: +1 pt per like (earn more in feed!)
+          </div>
+          <div className="text-2xl font-bold mt-2 text-gray-800">
+            Current Total: +{earnedPoints} points
+          </div>
+        </div>
       </div>
 
       <button

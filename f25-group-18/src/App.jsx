@@ -34,7 +34,13 @@ export default function App() {
   const submitChallenge = () => {
     setHasSubmitted(true);
     setIsActive(false);
-    setPoints((prev) => prev + 75);
+
+    // Calculate speed bonus: +15 points if submitted within 1 minute (timeLeft > 119 seconds)
+    const speedBonus = timeLeft > 119 ? 15 : 0;
+    const basePoints = 50;
+    const totalPoints = basePoints + speedBonus;
+
+    setPoints((prev) => prev + totalPoints);
   };
 
   return (
