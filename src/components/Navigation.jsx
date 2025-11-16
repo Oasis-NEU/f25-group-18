@@ -1,8 +1,8 @@
-import { Zap, Users, Trophy, Award } from "lucide-react";
+import { Flame, Users, Trophy, Award } from "lucide-react";
 
 const Navigation = ({ activeView, setActiveView }) => {
   const navItems = [
-    { id: "home", icon: Zap, label: "Challenge" },
+    { id: "home", icon: Flame, label: "Challenge" },
     { id: "feed", icon: Users, label: "Feed" },
     { id: "leaderboard", icon: Trophy, label: "Leaderboard" },
     { id: "profile", icon: Award, label: "Profile" },

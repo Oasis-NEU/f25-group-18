@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Star, Video } from "lucide-react";
+import { Star, Video, ArrowUp, ArrowDown } from "lucide-react";
 
 const FeedItem = ({ index, onVideoClick }) => {
   const [likes, setLikes] = useState(45 - index * 3);
@@ -8,6 +8,7 @@ const FeedItem = ({ index, onVideoClick }) => {
 
   const videoUrl = `/videos/video${index}.mp4`;
   const thumbnailUrl = `/videos/thumbnails/video${index}.png`;
+  const [voteDirection, setVoteDirection] = useState(null);
 
   const userNames = {
     1: "Justin X",
@@ -32,13 +33,9 @@ const FeedItem = ({ index, onVideoClick }) => {
           <div className="font-semibold text-gray-800">{userNames[index]}</div>
           <div className="text-xs text-gray-500">Submitted {index} min ago</div>
         </div>
-        <div className="flex items-center gap-1 text-yellow-600">
-          <Star className="w-4 h-4 fill-current" />
-          <span className="text-sm font-semibold">{likes}</span>
-        </div>
       </div>
       <div
-        className="rounded-xl h-64 mb-3 cursor-pointer relative group overflow-hidden bg-gradient-to-br from-blue-400 to-purple-500"
+        className="rounded-xl h-64 mb-3 cursor-pointer relative group overflow-hidden"
         onClick={() => onVideoClick(videoUrl)}
       >
         {!imageError ? (
@@ -59,7 +56,7 @@ const FeedItem = ({ index, onVideoClick }) => {
         <div className="absolute inset-0 bg-opacity-0 group-hover:bg-opacity-30 transition-all flex items-center justify-center">
           <div className="bg-white rounded-full p-4 shadow-lg opacity-0 group-hover:opacity-100 transition-opacity transform group-hover:scale-110">
             <svg
-              className="w-8 h-8 text-blue-600"
+              className="w-8 h-8 text-black"
               fill="currentColor"
               viewBox="0 0 24 24"
             >
@@ -68,22 +65,53 @@ const FeedItem = ({ index, onVideoClick }) => {
           </div>
         </div>
       </div>
-      <div className="flex gap-2">
-        <button
-          onClick={handleVote}
-          disabled={hasVoted}
-          className={`flex-1 py-2 rounded-lg font-semibold transition-all ${
-            hasVoted
-              ? "bg-green-100 text-green-700 cursor-not-allowed"
-              : "bg-blue-50 text-gray-700 hover:bg-blue-100"
-          }`}
-        >
-          {hasVoted ? "✓ Voted" : "👍 Vote"}
-        </button>
-        <button className="px-4 bg-blue-50 rounded-lg hover:bg-blue-100 transition-all text-gray-700">
-          💬
-        </button>
-      </div>
+    <div className="flex gap-3 mt-2 items-center justify-center">
+      <button
+        onClick={() => {
+          if (!hasVoted) {
+            setLikes(likes + 1);
+            setHasVoted(true);
+            setVoteDirection("up");
+          }
+        }}
+        disabled={hasVoted}
+        className={`p-2 rounded-lg transition-all ${
+          hasVoted
+            ? "bg-gray-100 text-gray-400 cursor-not-allowed"
+            : "bg-green-100 text-green-600 hover:bg-green-200"
+        }`}
+      >
+        <ArrowUp className="w-5 h-5" />
+      </button>
+      <span
+        className={`text-sm font-semibold transition-colors ${
+          voteDirection === "up"
+            ? "text-green-600"
+            : voteDirection === "down"
+            ? "text-red-600"
+            : "text-gray-800"
+        }`}
+      >
+        {likes}
+      </span>
+      <button
+        onClick={() => {
+          if (!hasVoted) {
+            setLikes(likes - 1);
+            setHasVoted(true);
+            setVoteDirection("down");
+          }
+        }}
+        disabled={hasVoted}
+        className={`p-2 rounded-lg transition-all ${
+          hasVoted
+            ? "bg-gray-100 text-gray-400 cursor-not-allowed"
+            : "bg-red-100 text-red-600 hover:bg-red-200"
+        }`}
+      >
+        <ArrowDown className="w-5 h-5" />
+      </button>
+    </div>
     </div>
   );
 };

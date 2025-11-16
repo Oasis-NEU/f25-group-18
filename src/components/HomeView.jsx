@@ -1,4 +1,4 @@
-import { Clock, Zap, Video, Upload, ChevronRight } from "lucide-react";
+import { Clock, Flame, Video, Upload, ChevronRight } from "lucide-react";
 import ChallengeTypes from "./ChallengeTypes";
 
 const HomeView = ({
@@ -45,7 +45,7 @@ const HomeView = ({
             onClick={startChallenge}
             className="w-full bg-purple-400 text-white py-4 rounded-2xl font-bold text-lg hover:bg-purple-500 transition-all duration-200 flex items-center justify-center gap-2 shadow-sm"
           >
-            <Zap className="w-6 h-6" />
+            <Flame className="w-6 h-6" />
             Simulate Challenge Drop
           </button>
           <p className="text-xs text-gray-500 mt-3">

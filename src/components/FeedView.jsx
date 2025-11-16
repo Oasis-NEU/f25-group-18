@@ -5,7 +5,7 @@ const FeedView = () => {
   const [selectedVideo, setSelectedVideo] = useState(null);
 
   return (
-    <div className="min-h-screen bg-pink-50">
+    <div className="min-h-screen bg-purple-50">
       <div className="bg-white border-b border-purple-100 sticky top-0 z-10 shadow-sm">
         <div className="max-w-6xl mx-auto px-6 py-4">
           <h2 className="text-2xl font-bold text-gray-800">Community Feed</h2>
