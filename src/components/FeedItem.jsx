@@ -56,7 +56,7 @@ const FeedItem = ({ index, onVideoClick }) => {
             <Video className="w-16 h-16 text-white opacity-50" />
           </div>
         )}
-        <div className="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-30 transition-all flex items-center justify-center">
+        <div className="absolute inset-0 bg-opacity-0 group-hover:bg-opacity-30 transition-all flex items-center justify-center">
           <div className="bg-white rounded-full p-4 shadow-lg opacity-0 group-hover:opacity-100 transition-opacity transform group-hover:scale-110">
             <svg
               className="w-8 h-8 text-blue-600"
