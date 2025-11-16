@@ -17,7 +17,7 @@ const LeaderboardView = () => (
           <Trophy className="w-10 h-10 mx-auto mb-2 text-gray-600" />
           <div className="font-bold text-gray-800">User 2</div>
           <div className="text-2xl font-bold mt-2 text-gray-700">4,320</div>
-          <div className="text-xs text-gray-500">points</div>
+          <div className="text-xs text-gray-700">points</div>
         </div>
 
         {/* 1st place */}
@@ -25,7 +25,7 @@ const LeaderboardView = () => (
           <Crown className="w-10 h-10 mx-auto mb-2 text-yellow-700" />
           <div className="font-bold text-gray-800">User 1</div>
           <div className="text-3xl font-bold mt-2 text-gray-800">5,890</div>
-          <div className="text-xs text-gray-600">points</div>
+          <div className="text-xs text-gray-700">points</div>
         </div>
 
         {/* 3rd place */}
@@ -33,7 +33,7 @@ const LeaderboardView = () => (
           <Trophy className="w-10 h-10 mx-auto mb-2 text-orange-600" />
           <div className="font-bold text-gray-800">User 3</div>
           <div className="text-2xl font-bold mt-2 text-gray-700">3,750</div>
-          <div className="text-xs text-gray-500">points</div>
+          <div className="text-xs text-gray-700">points</div>
         </div>
       </div>
 
